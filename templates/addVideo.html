@@ -1,0 +1,30 @@
+<!-- This is addVideo html page -->
+
+{% extends "addData.html" %}
+{% load static %}
+
+
+{% block title %}
+<title>Add-Video</title>
+{% endblock title %}
+
+{% block content %}
+
+<h1 class="container text-center">Adding Video</h1>
+<form class="container" action="" method="POST">
+  {% csrf_token %}
+  <div class="form-floating  mb-3">
+    <input required type="text" class="form-control" id="floatingInput" name="url" placeholder="url">
+    <label for="floatingInput">Url:</label>
+  </div>
+  <div class="form-floating">
+    <input required type="text" class="form-control" id="floatingPassword" name="title" placeholder="Title">
+    <label for="floatingPassword">Title:</label>
+  </div><br>
+
+  <button type="submit" class="container btn btn-primary mb-3">Add Video</button>
+</form>
+<div class="text-center "><a href="/about/{{id}}"><button class=" btn btn-success mx-3">GO Back</button></a><button
+    type="reset" class="mx-3 btn btn-danger">Reset</button></div>
+
+{% endblock content %}

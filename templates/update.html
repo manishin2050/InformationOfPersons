@@ -1,0 +1,69 @@
+<!-- This is update data html page -->
+
+{% extends "addData.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Update-Data</title>
+{% endblock title %}
+
+{% block content %}
+
+<h1 class="container text-center">Updating Person Data</h1>
+<form class="container" action="/edit/{{id}}" enctype="multipart/form-data" method="POST">
+  {% csrf_token %}
+  <div class="form-floating  mb-3">
+    <input required type="text" class="form-control" id="floatingInput" name="name" value="{{name}}" placeholder="Name">
+    <label for="floatingInput">Name:</label>
+  </div>
+
+  <div class="form-floating  mb-3">
+    <select class="form-control" name="category">
+      <option hidden value="{{category}}">{{category}}</option>
+      <option value="motivational">motivational</option>
+      <option value="spritiual">spritiual</option>
+      <option value="motivational+spritiual">motivational+spritiual</option>
+    </select>
+    <label for="floatingInput">Category:</label>
+  </div>
+  <div class="form-floating">
+    <textarea class="form-control" name="desc" placeholder="Leave a comment here" id="floatingTextarea2"
+      style="height: 100px">{{desc}}</textarea>
+    <label for="floatingTextarea2">Description:</label>
+  </div><br>
+  <div class="text-danger">Choose Img or paste link *</div>
+  <div class="container text-white text-truncate">currently: <a class="" target="_blank"
+      href="http://{{img}}">{{img}}</a></div>
+  <div class="form-floating">
+    <input  type="file" class="form-control" accept="image/*" name="fimg" placeholder="Img1">
+    <label for="formFile">Img:</label>
+
+    <div class="text-white">Paste img link here</div>
+    <input  type="text" class="form-control" id="floatingPassword1" name="img" placeholder="Paste img link">
+  </div><br>
+  <div class="text-danger">links Only *</div>
+  <div class="form-floating">
+    <input  type="text" class="form-control" id="floatingPassword" value="{{fb}}" name="fb" placeholder="Title">
+    <label for="floatingPassword">FaceBook:</label>
+  </div><br>
+  <div class="form-floating">
+    <input  type="text" class="form-control" id="floatingPassword" value="{{youtube}}" name="youtube"
+      placeholder="Title">
+    <label for="floatingPassword">YouTube:</label>
+  </div><br>
+  <div class="form-floating">
+    <input  type="text" class="form-control" id="floatingPassword" value="{{google}}" name="google" placeholder="Title">
+    <label for="floatingPassword">Google:</label>
+  </div><br>
+  <div class="form-floating">
+    <input  type="text" class="form-control" id="floatingPassword" value="{{insta}}" name="insta" placeholder="Title">
+    <label for="floatingPassword">Instagram:</label>
+  </div><br>
+
+  <button type="submit" class="container btn btn-warning mb-3">Update Data</button>
+</form>
+<div class="text-center "><a href="/"><button class=" btn btn-success mx-3">Home</button></a><button type="reset"
+    class="mx-3 btn btn-danger">Reset</button></div>
+
+{% endblock content %}

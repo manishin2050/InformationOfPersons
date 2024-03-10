@@ -1,0 +1,118 @@
+<!-- This is about html page -->
+
+{% extends "index.html" %}
+{% load static %}
+{% block title %}<title> About Page</title>{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+{% endblock css %}
+
+
+{% block content %}
+
+
+<div class="container mt-5">
+
+  <div class="cards">
+    <div id="card" style="border-radius: 50px;" class="card">
+      <div id="procover" style="border-radius: 50px;" class="same procover">
+        {% if user.is_superuser %}
+        <a title="Add Video" href="/addVideo/{{id}}">
+          <div title='Add Video' class="same add">+</div>
+        </a>
+        {% else %}
+        <a style="visibility: hidden;" href="#">
+          <div class="same add">+</div>
+        </a>
+        {% endif %}
+        <div class="text">
+
+          <div><img id="prep" class="pre-profile" title="{{name}}" src='{{img}}' alt="Oops">
+            <div class="short-procover">
+              <h1 title="{{name}}" class="text-truncate">{{name}}</h1>
+              <h1 title="Category" style="margin-top:20px;font-size:16px;"> <b>{{category}}</b> Speaker</h1>
+              <div class="social">
+                <div class="fb"><a target="_blank" title="Google" href="{{google}}"><i style="font-size: 24px;"
+                      class="fa-brands fa-google"></a></i></div>
+                <div class="fb"><a target="_blank" title="facebook" href="{{fb}}"><i
+                      class="fa-brands fa-facebook"></a></i></div>
+                <div class="fb"><a target="_blank" title="youtube" href="{{youtube}}"><i
+                      class="fa-brands fa-youtube"></a></i></div>
+                <div class="fb"><a target="_blank" title="instagram" href="{{insta}}"><i
+                      class="fa-brands fa-instagram"></a></i></div>
+              </div>
+            </div>
+          </div>
+          <div id="name" class="profile"><img title="{{name}}" src='{{img}}' alt="Oops">
+          </div>
+          <p id="desc" title="Description">{{desc}}</p>
+        </div>
+        <div title="more" id="tog" class="togle">></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Video fetching code starts -->
+
+  <div class="container mt-5">
+    {% if videos %}
+
+    <div class="container my-3 " style="display: grid;  justify-items: center; grid-template-columns: 1fr 1fr 1fr; ">
+      {% for video in videos %}
+      <div class="card mx-2 my-2" style="width: 18rem; height:24rem">
+        <iframe style="height: 300px;border-radius: 10px;" title="YouTube Video" allowfullscreen
+          src="{{path}}{{video.url}}" frameborder="0"></iframe>
+        <div class="card-body">
+          <h5 title="{{video.title}}" class="card-title">{{video.title}}</h5>
+          {% if user.is_superuser %}
+          <a href="/editVideo/{{video.id}}"><button title="Edit Video" class='btn btn-primary'>Edit</button></a>
+          <a href="/deleteVideo/{{video.id}}"><button title="Delete Video" class='btn btn-danger'>Delete</button></a>
+          {% endif %}
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+  {% else %}
+  <h1 style="margin:50px 0px;">video to add kro bhai, ese thodi dikhegi</h1>
+  {% endif %}
+</div>
+
+{% endblock content %}
+{% block js %}
+
+<script>
+  let tog = document.getElementById('tog');
+  let name = document.getElementById('name');
+  let prep = document.getElementById('prep');
+  let card = document.getElementById('card');
+  let procover = document.getElementById('procover');
+  tog.addEventListener('click', () => {
+    if (name.style.display == 'block') {
+
+      console.log("if me aa gya")
+      tog.style.transform = '';
+      name.style.display = 'none';
+      desc.style.display = 'none';
+      prep.style.visibility = '';
+      card.style.borderRadius = '50px';
+      procover.style.borderRadius = '50px';
+
+    }
+    else {
+      tog.style.transform = 'rotate(270deg)';
+      name.style.display = 'block';
+      desc.style.display = 'block';
+      prep.style.visibility = 'hidden';
+      card.style.borderRadius = '0px 0px 5px 5px';
+      procover.style.borderRadius = '5px 5px 0px 0px';
+      console.log("this is else")
+    }
+
+  });
+
+</script>
+{% endblock js %}

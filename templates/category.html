@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+<title>Category-Page</title>
+{% endblock title %}
+
+{% block css %}
+ <link rel="stylesheet" href="{% static 'style/index.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+  {% if data %}
+
+
+  <div class="container ">
+
+    {% for d in data %}
+    <div id="ab" class="cards">
+      <div class="card">
+        <div class="same procover">
+          {% if user.is_superuser %}
+          <a title="Edit" href="/edit/{{d.id}}">
+            <div class="same add">+</div>
+          </a>
+          {% else %}
+          <a style="visibility: hidden;" href="#">
+            <div class="same add">+</div>
+          </a>
+          {% endif %}
+          <div class="links"><a  title="Google" href="{{d.google}}"><i style="font-size: 24px;"
+                class="fa-brands fa-google"></a></i></div>
+        </div>
+        <a href="/about/{{d.id}}">
+          <div class="profile"><img title="{{d.name}}" src='{{d.img}}' alt="Oops"></div>
+          <div class="text">
+            <h1 title="{{d.name}}" class=" text-truncate">{{d.name}}</h1>
+            <p  title="Description">{{d.desc}}</p>
+          </div>
+        </a>
+        <div class="social">
+          <div class="fb"><a  title="Facebook" href="{{d.fb}}"><i class="fa-brands fa-facebook"></a></i></div>
+          <div class="fb"><a  title="YouTube" href="{{d.youtube}}"><i class="fa-brands fa-youtube"></a></i></div>
+          <div class="fb"><a  title="Instagram" href="{{d.insta}}"><i class="fa-brands fa-instagram"></a></i></div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+  {% else %}
+
+  <div class="container ">
+    <div class="cards">
+      <div class="card">
+        <div class="same procover">
+        </div>
+        <a href="#profile">
+          <div class="profile"><img src='{% static "imgs/1.jpeg" %}' alt=""></div>
+          <div class="text">
+            <h1>Opss</h1>
+            <p>It seems that database is empty plz put same data </p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+  {% endif %}
+{% endblock content %}

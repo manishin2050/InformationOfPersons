@@ -1,0 +1,14 @@
+{% extends "addData.html" %}
+{% load static  %}
+{% block title %}
+<title>Add Free Video</title>
+{% endblock title %}
+
+{% block content %}
+<div class="carousel-inner">
+    <div class="carousel-item active">
+      <!-- <img src="{% static 'imgs/1.jpeg' %}" class="d-block w-100" alt="..."> -->
+      <iframe style="position: relative;height: 85vh;width: 80%;left: 10%;"  target="_blank" src="https://www.youtube.com/embed/{{url}}" allowfullscreen frameborder="0"></iframe>
+    </div>
+</div>
+{% endblock content %}
