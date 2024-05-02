@@ -90,10 +90,10 @@
   let prep = document.getElementById('prep');
   let card = document.getElementById('card');
   let procover = document.getElementById('procover');
+
   tog.addEventListener('click', () => {
     if (name.style.display == 'block') {
-
-      console.log("if me aa gya")
+      console.log("if me aa gya");
       tog.style.transform = '';
       name.style.display = 'none';
       desc.style.display = 'none';
@@ -105,11 +105,12 @@
     else {
       tog.style.transform = 'rotate(270deg)';
       name.style.display = 'block';
+      card.style.transition= 'height 2s';
       desc.style.display = 'block';
       prep.style.visibility = 'hidden';
       card.style.borderRadius = '0px 0px 5px 5px';
       procover.style.borderRadius = '5px 5px 0px 0px';
-      console.log("this is else")
+      console.log("this is else");
     }
 
   });
