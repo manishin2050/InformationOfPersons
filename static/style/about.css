@@ -107,6 +107,8 @@ body {
 }
 
 .profile img {
+    background-color: red;
+    padding: 5px;
     position: relative;
     z-index: 1;
     float: left;
