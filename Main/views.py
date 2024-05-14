@@ -235,3 +235,19 @@ def search(request):
     if request.method=="GET":
         value=request.GET.get('cate')
     return render(request,'index.html',{"data":Data.objects.filter(name__icontains=value)|Data.objects.filter(category__icontains=value)|Data.objects.filter(desc__icontains=value)})
+
+
+# code for payment
+def payment(request,id):
+    import random
+    city=['Mumbai','Kolkata','Delhi','Chennai','Goa','Hariyana','London','New York']
+    context={
+        "id":id,
+        "img":Data.objects.get(id=id).img,
+        "name":Data.objects.get(id=id).name,
+        "category":Data.objects.get(id=id).category,
+        "price":random.randint(10,50),
+        "city":random.choice(city),
+
+    }
+    return render(request,'paypal.html',context)

@@ -13,5 +13,6 @@ urlpatterns = [
     path('logout/', views.Log_out),
     path('category/', views.category),
     path('search/', views.search),
+    path('payment/<int:id>', views.payment),
     path('playAddFreeVideo/', views.playAddFreeVideo),
 ]
