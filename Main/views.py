@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from Main.models import Data,Video
 from datetime import date
-from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
 # Create your views here.
 
 

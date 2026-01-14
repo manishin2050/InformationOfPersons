@@ -90,7 +90,7 @@
           <li>
             <span class="mx-2 mb-2">Sign In </span>
             <form action="/login/" method="POST">
-              {% csrf_token %}
+              {% csrf_token %} 
               <input required type="text" class="mx-2 px-1" placeholder="name" name="username" id="">
               <input required type="password" class="mx-2 mt-1 px-1" placeholder="password" name="password" id="">
               <button type="submit" class="btn btn-primary mx-2 mt-1 p-1 py-0">login</button>

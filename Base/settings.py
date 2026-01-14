@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-#vfn^0ts5^h5%+v12zx51z3wl6nq5xdk)&%z&3@h9wzs%ta+5(
 # middleware me 'whitenoise.middleware.WhiteNoiseMiddleware',
 # py manage.py collectstatic
 # STATIC_ROOT= os.path.join(BASE_DIR, 'static')
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
